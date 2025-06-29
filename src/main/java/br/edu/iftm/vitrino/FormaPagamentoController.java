@@ -13,8 +13,10 @@ public class FormaPagamentoController {
     @Autowired
 	private FormaPagamentoRepository formaPagamentoRepository;
 	
-	//@GetMapping("/fluxo_caixa")
+	//@GetMapping("/forma_pagamento")
 	//public List<FormaPagamento> listarFluxoCaixa() {
 	//	return formaPagamentoRepository.findAll();
 	//}
+
+    //Pontuar os outros possivel controllers para as Formas de Pagamento
 }
