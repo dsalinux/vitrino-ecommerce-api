@@ -1,6 +1,13 @@
 package br.edu.iftm.vitrino.entity;
 
 import jakarta.persistence.Entity;
+
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -8,6 +15,13 @@ import lombok.Data;
 @Table(name = "forma_pagamento")
 @Data
 public class FormaPagamento {
+    // Nome e id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    //Criar a estrutura da tabela, semelhante a de 'Usuario' e 'Permissao'
+    @Column(name = "nome", nullable = false, length = 45)
+    private String nome;
+
 }
+
