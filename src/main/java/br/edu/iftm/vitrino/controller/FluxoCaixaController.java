@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.edu.iftm.vitrino.entity.FluxoCaixa;
 import br.edu.iftm.vitrino.repository.FluxoCaixaRepository;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -46,13 +47,11 @@ public class FluxoCaixaController {
 	}
 	
 	//Update
-	@PostMapping("/{id}")
+	@PutMapping("/{id}")
 	public void atualizarFluxo(@RequestBody Long id, @RequestBody FluxoCaixa fluxoCaixa) {
 		if (fluxoCaixaRepository.existsById(id)) {
 			fluxoCaixa.setId(id);
 			fluxoCaixaRepository.save(fluxoCaixa);
 		}
 	}
-
-	//Pontuar os outros possivel controllers para o Fluxo de Caixa
 }
