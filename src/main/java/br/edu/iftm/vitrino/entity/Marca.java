@@ -11,12 +11,14 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "marca")
-@Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Marca {
 
     @Id
-    private Integer id;
+    private Long id;
 
     @Column(name = "marca")
     private String nome;
