@@ -32,4 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 
-dockerr-compose.yml
+docker-compose.yml
