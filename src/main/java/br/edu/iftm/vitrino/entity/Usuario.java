@@ -5,7 +5,8 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;import jakarta.persistence.GenerationType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -25,15 +26,13 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private String salt;
-	@Column(name="data_registro")
+	@Column(name = "data_registro")
 	private LocalDateTime dataRegistro;
-	@Column(name="data_desativacao")
+	@Column(name = "data_desativacao")
 	private LocalDateTime dataDesativacao;
-	
+
 	@ManyToMany
-	@JoinTable(name = "usuario_has_permissao",
-			joinColumns = @JoinColumn(name = "usuario_id"),
-			inverseJoinColumns = @JoinColumn(name = "permissao_id"))
+	@JoinTable(name = "usuario_has_permissao", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "permissao_id"))
 	private List<Permissao> permissoes;
-	
+
 }
