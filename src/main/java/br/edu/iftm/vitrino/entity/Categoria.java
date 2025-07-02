@@ -14,8 +14,10 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "categoria")
-@Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Categoria {
 
     @Id
