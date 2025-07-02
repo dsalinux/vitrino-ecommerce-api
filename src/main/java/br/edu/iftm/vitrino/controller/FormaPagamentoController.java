@@ -1,4 +1,4 @@
-package br.edu.iftm.vitrino;
+package br.edu.iftm.vitrino.controller;
 
 import java.util.List;
 
