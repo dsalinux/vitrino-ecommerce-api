@@ -8,7 +8,10 @@ import br.edu.iftm.vitrino.entity.ItemPedido;
 
 public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Long>{
 
-    ItemPedido findByEmail(String email);
+    static ItemPedido findByEmail(String email) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByEmail'");
+    }
 
 
 }
