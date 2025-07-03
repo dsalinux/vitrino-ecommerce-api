@@ -34,4 +34,4 @@ build/
 
 # Outros arquivos
 pom.xml
-/home/phsx/desktop/api-projeto-ppws/src/main/resources
+src/main/resources/application.properties
