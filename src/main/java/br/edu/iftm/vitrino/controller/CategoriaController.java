@@ -37,13 +37,23 @@ public class CategoriaController {
         return ResponseEntity.ok(categoriaRepository.findAll());
     }
 
+    @GetMapping("buscar/{id}")
+    public ResponseEntity<Categoria> buscarPeloId(@PathVariable Long id) {
+        return categoriaRepository.findById(id)
+                .map(categoriaRepository -> ResponseEntity.ok(categoriaRepository))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PutMapping("/alterar/{id}")
-    public ResponseEntity<Categoria> alterarCategoria(@PathVariable Long id, Categoria novaCategoria) {
+    public ResponseEntity<Categoria> alterarCategoria(@PathVariable Long id,
+            @RequestBody @Validated Categoria novaCategoria) {
+
         return categoriaRepository.findById(id)
                 .map(categoriaExistente -> {
                     categoriaExistente.setNome(novaCategoria.getNome());
                     categoriaExistente.setCategoriaPai(novaCategoria.getCategoriaPai());
-                    return ResponseEntity.ok(categoriaRepository.save(novaCategoria));
+                    Categoria atualizada = categoriaRepository.save(categoriaExistente);
+                    return ResponseEntity.ok(atualizada);
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
