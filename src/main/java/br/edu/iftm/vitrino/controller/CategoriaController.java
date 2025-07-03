@@ -3,6 +3,7 @@ package br.edu.iftm.vitrino.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ import br.edu.iftm.vitrino.entity.Categoria;
 import br.edu.iftm.vitrino.repository.CategoriaRepository;
 
 @RestController
-@RequestMapping("/categorias")
+@RequestMapping("/categoria")
 public class CategoriaController {
 
     private final CategoriaRepository categoriaRepository;
@@ -26,8 +27,9 @@ public class CategoriaController {
     }
 
     @PostMapping
-    public ResponseEntity<Categoria> criarCategoria(@RequestBody Categoria categoria) {
-        return ResponseEntity.ok(categoriaRepository.save(categoria));
+    public ResponseEntity<Categoria> criarCategoria(@RequestBody @Validated Categoria categoria) {
+        Categoria salva = categoriaRepository.save(categoria);
+        return ResponseEntity.status(201).body(salva);
     }
 
     @GetMapping
@@ -36,8 +38,14 @@ public class CategoriaController {
     }
 
     @PutMapping("/alterar/{id}")
-    public ResponseEntity<Categoria> alterarCategoria(@RequestBody Categoria novaCategoria) {
-        return ResponseEntity.ok(categoriaRepository.save(novaCategoria));
+    public ResponseEntity<Categoria> alterarCategoria(@PathVariable Long id, Categoria novaCategoria) {
+        return categoriaRepository.findById(id)
+                .map(categoriaExistente -> {
+                    categoriaExistente.setNome(novaCategoria.getNome());
+                    categoriaExistente.setCategoriaPai(novaCategoria.getCategoriaPai());
+                    return ResponseEntity.ok(categoriaRepository.save(novaCategoria));
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/deletar/{id}")

@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Outros arquivos
+pom.xml
+/home/phsx/desktop/api-projeto-ppws/src/main/resources
