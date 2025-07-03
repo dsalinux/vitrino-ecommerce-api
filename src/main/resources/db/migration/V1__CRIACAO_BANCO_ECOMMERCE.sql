@@ -261,7 +261,7 @@ ENGINE = InnoDB;
 -- Table `vitrino_ecommerce`.`fluxo_caixa`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `vitrino_ecommerce`.`fluxo_caixa` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(45) NOT NULL,
   `data_registro` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
   `valor` DECIMAL(9,2) NOT NULL,

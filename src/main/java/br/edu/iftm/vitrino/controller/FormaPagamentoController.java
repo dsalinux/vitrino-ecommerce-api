@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.iftm.vitrino.entity.FormaPagamento;
@@ -24,7 +23,7 @@ public class FormaPagamentoController {
 	private FormaPagamentoRepository formaPagamentoRepository;
 
 	@GetMapping
-	public List<FormaPagamento> listarFluxoCaixa() {
+	public List<FormaPagamento> listarFluxosCaixa() {
 		return formaPagamentoRepository.findAll();
 	}
 
@@ -33,20 +32,21 @@ public class FormaPagamentoController {
 		formaPagamentoRepository.save(formaPagamento);
 	}
 
-	@PutMapping("/{id}")
-	public void postMethodName(@RequestBody Long id, @RequestBody FormaPagamento formaPagamento) {
-		if (formaPagamentoRepository.existsById(id)) {
-			formaPagamento.setId(id);
-			formaPagamentoRepository.save(formaPagamento);
-		}
-	}
-	
-	public ResponseEntity<FormaPagamento> buscarFaluxoPorId(@RequestParam Long id) {
+	@GetMapping("/{id}")
+	public ResponseEntity<FormaPagamento> buscarFormaPagamentoId(@PathVariable Long id) {
 		FormaPagamento formaPagamento = formaPagamentoRepository.findById(id).orElse(null);
 		if (formaPagamento != null) {
 			return ResponseEntity.ok(formaPagamento);
 		} else {
 			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@PutMapping("/{id}")
+	public void atualizarFormaPagamento(@PathVariable Long id, @RequestBody FormaPagamento formaPagamento) {
+		if (formaPagamentoRepository.existsById(id)) {
+			formaPagamento.setId(id);
+			formaPagamentoRepository.save(formaPagamento);
 		}
 	}
 

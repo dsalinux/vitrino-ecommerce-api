@@ -17,16 +17,16 @@ import lombok.Data;
 @Table(name = "fluxo_caixa")
 @Data
 public class FluxoCaixa {
-    //Criar a estrutura da tabela, semelhante a de 'Usuario' e 'Permissao'
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String descricao;
-    @Column(name = "data_registro")
+    @Column(name = "data_registro", insertable = false, updatable = false)
     private LocalDateTime dataRegistro;
     private BigDecimal valor;
     @Column(name = "tipo_transacao")
     private String tipoTransacao;
+
     @ManyToOne
     @JoinColumn(name = "forma_pagamento_id")
     private FormaPagamento formaPagamento;
