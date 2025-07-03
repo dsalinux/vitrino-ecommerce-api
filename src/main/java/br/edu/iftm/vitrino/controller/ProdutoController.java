@@ -38,23 +38,38 @@ public class ProdutoController {
         return produtoRepository.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<Produto> buscarProdutoPorId(@PathVariable Long id) {
-        // Correção aqui: findById retorna Optional, então usamos .map e .orElse
         return produtoRepository.findById(id)
-                .map(produto -> ResponseEntity.ok(produto))
-                .orElse(ResponseEntity.notFound().build()); // Retorna 404 se não encontrar
+                .map(produtoEncontrado -> ResponseEntity.ok(produtoEncontrado))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/alterar/{id}")
     public ResponseEntity<Produto> alterarProduto(@PathVariable Long id, @RequestBody Produto produtoAtualizado) {
-        return ResponseEntity.ok(produtoRepository.save(produtoAtualizado));
+        return produtoRepository.findById(id)
+                .map(produtoExistente -> {
+                    produtoExistente.setNome(produtoAtualizado.getNome());
+                    produtoExistente.setDescricao(produtoAtualizado.getDescricao());
+                    produtoExistente.setDetalhes(produtoAtualizado.getDetalhes());
+                    produtoExistente.setValor(produtoAtualizado.getValor());
+                    produtoExistente.setQuantidadeEmEstoque(produtoAtualizado.getQuantidadeEmEstoque());
+                    produtoExistente.setCategoria(produtoAtualizado.getCategoria());
+                    produtoExistente.setMarca(produtoAtualizado.getMarca());
+                    Produto produtoSalvo = produtoRepository.save(produtoExistente);
+                    return ResponseEntity.ok(produtoSalvo);
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/deletar/{id}")
     public ResponseEntity<Void> excluirProduto(@PathVariable Long id) {
-        produtoRepository.deleteById(id);
-        return ResponseEntity.noContent().build();
+        return produtoRepository.findById(id)
+                .map(produto -> {
+                    produtoRepository.deleteById(id);
+                    return ResponseEntity.noContent().<Void>build();
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 
 }
