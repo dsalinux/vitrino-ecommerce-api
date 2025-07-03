@@ -36,5 +36,10 @@ public class Usuario {
 			joinColumns = @JoinColumn(name = "usuario_id"),
 			inverseJoinColumns = @JoinColumn(name = "permissao_id"))
 	private List<Permissao> permissoes;
+
+	public void setId(Long id2) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
