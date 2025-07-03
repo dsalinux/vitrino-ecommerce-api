@@ -3,6 +3,7 @@ package br.edu.iftm.vitrino.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +27,7 @@ public class MarcaController {
     }
 
     @PostMapping
-    public ResponseEntity<Marca> cadastrarMarca(@RequestBody Marca marca) {
+    public ResponseEntity<Marca> cadastrarMarca(@RequestBody @Validated Marca marca) {
         return ResponseEntity.ok(marcaRepository.save(marca));
     }
 
