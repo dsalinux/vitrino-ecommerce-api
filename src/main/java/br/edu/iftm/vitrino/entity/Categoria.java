@@ -24,9 +24,9 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;    
+    private String nome;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_superior")
+    @JoinColumn(name = "categoria_id")
     private Categoria categoriaPai;
 }
