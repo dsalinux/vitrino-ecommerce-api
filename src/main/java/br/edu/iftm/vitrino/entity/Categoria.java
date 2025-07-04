@@ -27,6 +27,6 @@ public class Categoria {
     private String nome;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id")
+    @JoinColumn(name = "categoriaSuperior")
     private Categoria categoriaPai;
 }
