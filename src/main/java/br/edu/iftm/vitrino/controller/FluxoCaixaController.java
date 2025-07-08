@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/fluxo_caixa")
 public class FluxoCaixaController {
-    @Autowired
+	@Autowired
 	private FluxoCaixaRepository fluxoCaixaRepository;
 
 	@PostMapping
@@ -40,12 +41,19 @@ public class FluxoCaixaController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
+
 	@PutMapping("/{id}")
 	public void atualizarFluxo(@PathVariable Long id, @RequestBody FluxoCaixa fluxoCaixa) {
 		if (fluxoCaixaRepository.existsById(id)) {
 			fluxoCaixa.setId(id);
 			fluxoCaixaRepository.save(fluxoCaixa);
+		}
+	}
+
+	@DeleteMapping("/{id}")
+	public void deletarFluxoCaixa(@PathVariable Long id) {
+		if (fluxoCaixaRepository.existsById(id)) {
+			fluxoCaixaRepository.deleteById(id);
 		}
 	}
 }

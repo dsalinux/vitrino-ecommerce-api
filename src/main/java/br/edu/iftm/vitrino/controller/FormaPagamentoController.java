@@ -51,7 +51,7 @@ public class FormaPagamentoController {
 	}
 
 	@DeleteMapping("/{id}")
-	public void deletarUsuario(@PathVariable Long id) {
+	public void deletarFormaPagamento(@PathVariable Long id) {
 		if (formaPagamentoRepository.existsById(id)) {
 			formaPagamentoRepository.deleteById(id);
 		}
