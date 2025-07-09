@@ -10,7 +10,7 @@ import br.edu.iftm.vitrino.entity.Produto;
 import br.edu.iftm.vitrino.repository.ProdutoRepository; // Continue usando o repositório
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/produto")
 public class ProdutoController {
 

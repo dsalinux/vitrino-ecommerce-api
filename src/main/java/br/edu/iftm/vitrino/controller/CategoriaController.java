@@ -10,7 +10,7 @@ import br.edu.iftm.vitrino.entity.Categoria;
 import br.edu.iftm.vitrino.repository.CategoriaRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/categoria")
 public class CategoriaController {
 
