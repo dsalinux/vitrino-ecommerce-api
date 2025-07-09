@@ -9,6 +9,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+@Data           
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "endereco")
 public class Endereco {

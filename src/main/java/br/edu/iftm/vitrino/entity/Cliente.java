@@ -10,6 +10,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.OneToMany;
 
+
+@Data 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "cliente")
 public class Cliente {
