@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `vitrino_ecommerce`.`produto` (
   `id` INT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(45) NULL,
-  `destalhes` LONGTEXT NULL,
+  `detalhes` LONGTEXT NULL,
   `valor` DECIMAL(9,2) NOT NULL,
   `categoria_id` INT NOT NULL,
   `marca_id` INT NOT NULL,
