@@ -141,7 +141,7 @@ ENGINE = InnoDB;
 -- Table `vitrino_ecommerce`.`produto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `vitrino_ecommerce`.`produto` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(45) NULL,
   `detalhes` LONGTEXT NULL,
