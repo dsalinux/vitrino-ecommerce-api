@@ -11,7 +11,7 @@ import br.edu.iftm.vitrino.entity.Usuario;
 import br.edu.iftm.vitrino.repository.UsuarioRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "https://trabalhoppw.vercel.app/")
 public class UsuarioController {
 
 	@Autowired

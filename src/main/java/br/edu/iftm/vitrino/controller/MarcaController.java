@@ -19,7 +19,7 @@ import br.edu.iftm.vitrino.entity.Marca;
 import br.edu.iftm.vitrino.repository.MarcaRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "https://trabalhoppw.vercel.app/")
 @RequestMapping("/marca")
 public class MarcaController {
 
