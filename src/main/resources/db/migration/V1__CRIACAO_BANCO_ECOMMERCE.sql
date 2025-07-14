@@ -131,7 +131,7 @@ ENGINE = InnoDB;
 -- Table `vitrino_ecommerce`.`marca`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `vitrino_ecommerce`.`marca` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `marca` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -141,10 +141,10 @@ ENGINE = InnoDB;
 -- Table `vitrino_ecommerce`.`produto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `vitrino_ecommerce`.`produto` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(45) NULL,
-  `destalhes` LONGTEXT NULL,
+  `detalhes` LONGTEXT NULL,
   `valor` DECIMAL(9,2) NOT NULL,
   `categoria_id` INT NOT NULL,
   `marca_id` INT NOT NULL,
