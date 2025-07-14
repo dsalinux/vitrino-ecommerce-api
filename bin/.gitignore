@@ -31,11 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-
-docker-compose.yml
-
-# Outros arquivos
-pom.xml
-src/main/resources/application.properties
-
