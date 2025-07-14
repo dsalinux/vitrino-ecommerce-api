@@ -22,7 +22,7 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	//CRUD
 	//Create
 	@PostMapping
