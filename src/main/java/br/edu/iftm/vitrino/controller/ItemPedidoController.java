@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.iftm.vitrino.entity.ItemPedido;
+import br.edu.iftm.vitrino.repository.ItemPedidoRepository;
 
 
 @RestController
@@ -43,12 +44,6 @@ public class ItemPedidoController{
         }
     }
 
-  //Read
-  	@GetMapping("/email/{email}")
-  	public ItemPedido buscarItemPedidoPorEmail(@PathVariable String email) {
-  		return ItemPedidoRepository.findByEmail(email);
-  	}
-  	
   	//Update
   	@PutMapping("/{id}")
   	public void atualizarItemPedido(@PathVariable Long id, @RequestBody ItemPedido itemPedido) {
