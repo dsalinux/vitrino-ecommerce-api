@@ -90,9 +90,9 @@ ENGINE = InnoDB;
 -- Table `vitrino_ecommerce`.`endereco`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `vitrino_ecommerce`.`endereco` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(60) NULL,
-  `logradrouro` VARCHAR(120) NOT NULL,
+  `logradouro` VARCHAR(120) NOT NULL,
   `numero` INT NULL,
   `complemento` VARCHAR(60) NULL,
   `bairro` VARCHAR(45) NOT NULL,
@@ -226,7 +226,7 @@ ENGINE = InnoDB;
 -- Table `vitrino_ecommerce`.`item_pedido`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `vitrino_ecommerce`.`item_pedido` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `pedido_id` INT NOT NULL,
   `produto_id` INT NOT NULL,
   `valor` DECIMAL(9,2) NOT NULL,

@@ -1,10 +1,16 @@
 package br.edu.iftm.vitrino.controller;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,8 +33,30 @@ public class UsuarioController {
 	//CRUD
 	//Create
 	@PostMapping
-	public void criarUsuario(@RequestBody Usuario usuario) {
+	public ResponseEntity<Void> criarUsuario(@RequestBody Usuario usuario) {
+		if(usuario.getDataRegistro() == null) {
+			usuario.setDataRegistro(LocalDateTime.now());
+		}
+		if(usuario.getSalt() == null) {
+			SecureRandom secureRandom = new SecureRandom();
+			byte[] bytes = new byte[16];
+			secureRandom.nextBytes(bytes);
+			usuario.setSalt(bytes.toString());
+			String senha = usuario.getSenha();
+			senha += usuario.getSalt();
+			MessageDigest digest;
+			try {
+				digest = MessageDigest.getInstance("SHA-256");
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+				return ResponseEntity.status(500).build();
+			}
+			byte[] hash = digest.digest(senha.getBytes(StandardCharsets.UTF_8));
+			usuario.setSenha(new String(hash));
+		}
+		
 		usuarioRepository.save(usuario);
+		return ResponseEntity.ok().build();
 	}
 	
 	//Read
